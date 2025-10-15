@@ -15,6 +15,8 @@ public class followcontroller : MonoBehaviour
         pos.x = target.transform.position.x;
 
         transform.position = pos;
+
+      
     
 
     }

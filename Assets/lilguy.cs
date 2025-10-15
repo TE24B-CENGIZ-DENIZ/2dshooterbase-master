@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class lilguy : MonoBehaviour
 {
+    float corchp = 0;
+    
+    [SerializeField]
+    float crocmaxhp = 3;
+
      [SerializeField]
     float speed = 3.5f;
 
@@ -13,6 +18,12 @@ public class lilguy : MonoBehaviour
 
     [SerializeField]
     LayerMask groundlayer;
+
+
+    void Start()
+    {
+        crocmaxhp = 3;  
+    }
     void FixedUpdate()
     {
 
@@ -30,8 +41,17 @@ public class lilguy : MonoBehaviour
     {
         float inputX = Input.GetAxisRaw("Horizontal");
 
-          Vector2 movement2 =   Vector2.right * inputX;
+        Vector2 movement2 = Vector2.right * inputX;
 
         transform.Translate(movement2 * speed * Time.deltaTime);
+    }
+    
+     void OnTriggerEnter2D( Collider2D  collision)
+    {
+        if (collision.gameObject.tag == "enemy")
+        {
+             
+        }
+       
     }
 }

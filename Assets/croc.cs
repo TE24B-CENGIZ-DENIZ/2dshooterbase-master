@@ -1,3 +1,4 @@
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -6,10 +7,11 @@ public class croc : MonoBehaviour
 
 
     [SerializeField]
-    float speed = 3.5f;
+    GameObject target;
 
     [SerializeField]
-    float jumpforce = 8.5f;
+    float speed = 3.5f;
+
 
     [SerializeField]
     LayerMask groundlayer;
@@ -17,10 +19,10 @@ public class croc : MonoBehaviour
     [SerializeField]
     GameObject groundCheck;
 
-    
+
     void Start()
     {
-       
+
     }
 
     void FixedUpdate()
@@ -29,22 +31,36 @@ public class croc : MonoBehaviour
         bool isgrounded = Physics2D.OverlapCircle(groundCheck.transform.position, .18f, groundlayer);
 
 
-        if (Input.GetAxisRaw("Jump") > 0 && isgrounded == true)
+        if (isgrounded == true)
         {
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
-            rb.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
         }
 
 
     }
-      void Update()
+    void Update()
 
 
     {
 
-        Vector2 movement = Vector2.left * speed * Time.deltaTime;
-        transform.Translate(movement);
+
+
+        if (target.transform.position.x < transform.position.x)
+        {
+
+            Vector2 movement = Vector2.left * speed * Time.deltaTime;
+            transform.Translate(movement);
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else
+        {
+            Vector2 movement = Vector2.right * speed * Time.deltaTime;
+            transform.Translate(movement);
+
+            GetComponent<SpriteRenderer>().flipX = true;
+
+        }
 
     }
 }
