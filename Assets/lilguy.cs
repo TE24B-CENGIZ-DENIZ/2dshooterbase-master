@@ -1,13 +1,14 @@
 using UnityEngine;
-
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class lilguy : MonoBehaviour
 {
-    float corchp = 0;
-    
-    [SerializeField]
-    float crocmaxhp = 3;
 
-     [SerializeField]
+    float lilhp = 0;
+    [SerializeField]
+    float lilmaxhp = 3;
+
+    [SerializeField]
     float speed = 3.5f;
 
     [SerializeField]
@@ -22,7 +23,7 @@ public class lilguy : MonoBehaviour
 
     void Start()
     {
-        crocmaxhp = 3;  
+        lilhp = lilmaxhp;
     }
     void FixedUpdate()
     {
@@ -45,13 +46,25 @@ public class lilguy : MonoBehaviour
 
         transform.Translate(movement2 * speed * Time.deltaTime);
     }
-    
-     void OnTriggerEnter2D( Collider2D  collision)
+
+     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "enemy")
         {
-             
+
+
+            lilhp--;
+
+            
+             if (lilhp <= 0)
+            {
+                SceneManager.LoadScene("asa");
+            }
+
         }
-       
+
     }
+    
+        
+    
 }

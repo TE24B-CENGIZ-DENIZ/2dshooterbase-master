@@ -5,6 +5,9 @@ using UnityEngine.UIElements;
 public class croc : MonoBehaviour
 {
 
+    float crochp = 0;
+    [SerializeField]
+    float crocmaxhp = 3;
 
     [SerializeField]
     GameObject target;
@@ -16,19 +19,18 @@ public class croc : MonoBehaviour
     [SerializeField]
     LayerMask groundlayer;
 
-    [SerializeField]
-    GameObject groundCheck;
+
 
 
     void Start()
     {
-
+        crochp = crocmaxhp;
     }
 
     void FixedUpdate()
     {
 
-        bool isgrounded = Physics2D.OverlapCircle(groundCheck.transform.position, .18f, groundlayer);
+        bool isgrounded = Physics2D.OverlapCircle(transform.position, groundlayer);
 
 
         if (isgrounded == true)
@@ -62,5 +64,34 @@ public class croc : MonoBehaviour
 
         }
 
+
+
+
+
+
+
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "hero")
+        {
+            print("ouch");
+            crochp--;
+
+        }
+
+        if (crochp <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+
+    }
+
+
+
+
+
+
+
 }
