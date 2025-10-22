@@ -11,5 +11,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/game over.unity
     guid: 2626da1049845a5409e093733137a267
+  - enabled: 1
+    path: Assets/asa.unity
+    guid: 6326a3c1d3fc2b643a6381cf18639d5b
+  - enabled: 1
+    path: Assets/platform.unity
+    guid: 6b25a9f9b2a69a24d883b9d8515ff072
+  - enabled: 1
+    path: Assets/start.unity
+    guid: 5fac0fe47bc49034c8bae5c91753a2c3
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
