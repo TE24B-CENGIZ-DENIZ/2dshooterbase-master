@@ -81,7 +81,7 @@ public class croc : MonoBehaviour
 
         }
 
-        if (crochp <= 0)
+        if (crochp <= 0 || transform.position.y < -6)
         {
             Destroy(this.gameObject);
         }
