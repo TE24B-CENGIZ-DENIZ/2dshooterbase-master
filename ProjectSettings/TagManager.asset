@@ -6,6 +6,7 @@ TagManager:
   tags:
   - enemy
   - hero
+  - gunn
   layers:
   - Default
   - TransparentFX

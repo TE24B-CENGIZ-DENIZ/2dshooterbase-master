@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class lilguy : MonoBehaviour
 {
+    [SerializeField]
+    GameObject gunn;
 
     float lilhp = 0;
     [SerializeField]
@@ -47,7 +49,7 @@ public class lilguy : MonoBehaviour
         transform.Translate(movement2 * speed * Time.deltaTime);
     }
 
-     void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "enemy")
         {
@@ -55,16 +57,21 @@ public class lilguy : MonoBehaviour
 
             lilhp--;
 
-            
-             if (lilhp <= 0)
+
+            if (lilhp <= 0)
             {
                 SceneManager.LoadScene("asa");
             }
 
         }
+        if (collision.gameObject.tag == "gunn")
+        {
+            gunn.transform.parent = transform;
+
+        }
 
     }
-    
-        
-    
+
+
+
 }
