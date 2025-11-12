@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.UIElements;
 
 public class thegunncon : MonoBehaviour
 {
@@ -11,11 +12,17 @@ public class thegunncon : MonoBehaviour
 
     }
 
-
     void Update()
     {
-
+        if (transform.position.y > 2.9f)
+        {
+            Vector2 position = new();
+            position.y = 3;
+            transform.position = position;
+            GetComponent<Rigidbody2D>().sleepMode = RigidbodySleepMode2D.StartAsleep;
+        }
     }
+
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -32,5 +39,7 @@ public class thegunncon : MonoBehaviour
 
         }
     }
-  
+
+
+
 }

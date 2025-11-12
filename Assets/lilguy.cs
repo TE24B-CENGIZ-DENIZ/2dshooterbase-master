@@ -25,6 +25,9 @@ public class lilguy : MonoBehaviour
     [SerializeField]
     LayerMask groundlayer;
 
+    [SerializeField]
+    GameObject gunPosition;
+
 
     void Start()
     {
@@ -51,12 +54,16 @@ public class lilguy : MonoBehaviour
         Vector2 movement2 = Vector2.right * inputX;
         if ( movement2 ==  Vector2.right)
         {
-
-            
+            Vector3 gunPosV = gunPosition.transform.localPosition;
+            gunPosV.x = 0.4f;
+            gunPosition.transform.localPosition = gunPosV;
             GetComponent<SpriteRenderer>().flipX = false;
         }
         else
         {
+            Vector3 gunPosV = gunPosition.transform.localPosition;
+            gunPosV.x = -0.4f;
+            gunPosition.transform.localPosition = gunPosV;
 
             GetComponent<SpriteRenderer>().flipX = true;
 
@@ -86,10 +93,16 @@ public class lilguy : MonoBehaviour
         }
         if (collision.gameObject.tag == "gunn")
         {
-            gunn.transform.parent = transform;
-          
+            gunn.transform.parent = gunPosition.transform;
+            gunn.transform.localPosition = Vector2.zero;
+            gunn.GetComponent<Rigidbody2D>().simulated = false;
+
 
         }
+        
+
+
+        
 
     }
 
