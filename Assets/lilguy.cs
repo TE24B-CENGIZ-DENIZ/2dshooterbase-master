@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
+using UnityEngine.UIElements;
+using System.IO.MemoryMappedFiles;
 public class lilguy : MonoBehaviour
 {
     [SerializeField]
@@ -26,6 +29,7 @@ public class lilguy : MonoBehaviour
     void Start()
     {
         lilhp = lilmaxhp;
+        
     }
     void FixedUpdate()
     {
@@ -45,8 +49,24 @@ public class lilguy : MonoBehaviour
         float inputX = Input.GetAxisRaw("Horizontal");
 
         Vector2 movement2 = Vector2.right * inputX;
+        if ( movement2 ==  Vector2.right)
+        {
+
+            
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else
+        {
+
+            GetComponent<SpriteRenderer>().flipX = true;
+
+        }
 
         transform.Translate(movement2 * speed * Time.deltaTime);
+    
+       
+     
+        
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -67,6 +87,7 @@ public class lilguy : MonoBehaviour
         if (collision.gameObject.tag == "gunn")
         {
             gunn.transform.parent = transform;
+          
 
         }
 
