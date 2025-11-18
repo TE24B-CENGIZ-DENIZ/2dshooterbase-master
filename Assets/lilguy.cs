@@ -98,6 +98,9 @@ public class lilguy : MonoBehaviour
             gunn.GetComponent<Rigidbody2D>().simulated = false;
 
 
+            
+
+
         }
         
 

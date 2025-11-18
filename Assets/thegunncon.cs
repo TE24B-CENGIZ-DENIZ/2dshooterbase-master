@@ -3,10 +3,18 @@ using UnityEngine.Animations;
 using UnityEngine.UIElements;
 
 public class thegunncon : MonoBehaviour
-{
+{ 
+     [SerializeField]
+    GameObject boltPrefab;
 
     [SerializeField]
     GameObject lilguy;
+
+
+
+     float timesincelastshot = 0;
+    [SerializeField]
+    float timebetweenshots = 0.5f;
     void Start()
     {
 
@@ -14,7 +22,15 @@ public class thegunncon : MonoBehaviour
 
     void Update()
     {
-        
+         timesincelastshot += Time.deltaTime;
+
+        if (Input.GetAxisRaw("Fire1") > 0 && timesincelastshot > timebetweenshots)
+        {
+            
+
+            Instantiate(boltPrefab, transform.position, Quaternion.identity);
+            timesincelastshot = 0;
+        }
     }
 
 
@@ -30,6 +46,7 @@ public class thegunncon : MonoBehaviour
             {
                 GetComponent<SpriteRenderer>().flipX = true;
             }
+            
 
         }
     }
