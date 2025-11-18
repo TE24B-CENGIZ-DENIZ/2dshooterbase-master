@@ -14,13 +14,7 @@ public class thegunncon : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y > 2.9f)
-        {
-            Vector2 position = new();
-            position.y = 3;
-            transform.position = position;
-            GetComponent<Rigidbody2D>().sleepMode = RigidbodySleepMode2D.StartAsleep;
-        }
+        
     }
 
 
