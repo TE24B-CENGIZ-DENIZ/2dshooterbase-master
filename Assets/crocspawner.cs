@@ -7,7 +7,7 @@ public class crocspawner : MonoBehaviour
 
     float timesincelastcrocspawn = 0;
 
-    float timebetweenencrocspawn = 10;
+    float timebetweenencrocspawn = 15;
 
     void Start()
     {

@@ -6,9 +6,14 @@ public class boltcontroler : MonoBehaviour
     [SerializeField]
     float boltspeed = 4;
 
+  
+    
+   
+
     void Start()
     {
         // Destroy(this.gameObject, 3);
+        
     }
     //decimal sec write  f after
 
@@ -17,12 +22,12 @@ public class boltcontroler : MonoBehaviour
     void Update()
     {
 
-        Vector2 movement = Vector2.up * boltspeed * Time.deltaTime;
+        Vector2 movement = Vector2.left * boltspeed * Time.deltaTime;
         transform.Translate(movement);
 
         // if (tranform.position.y > Camera.main.orthographicSize + 1)
 
-        if (transform.position.y > 6)
+        if (transform.position.x > 15 || transform.position.x < -15)
         {
             Destroy(this.gameObject);
         }
@@ -34,7 +39,7 @@ public class boltcontroler : MonoBehaviour
     {
         if (collision.gameObject.tag == "enemy")
         {
-             Destroy(this.gameObject);
+          
         }
        
     }

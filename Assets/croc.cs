@@ -1,6 +1,7 @@
 using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class croc : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class croc : MonoBehaviour
 
     [SerializeField]
     float speed = 3.5f;
+
+
 
 
     [SerializeField]
@@ -65,6 +68,10 @@ public class croc : MonoBehaviour
         }
 
 
+        if (crochp <= 0)
+        {
+            SceneManager.LoadScene("level2");
+        }
 
 
 
@@ -81,12 +88,33 @@ public class croc : MonoBehaviour
 
         }
 
-        if (crochp <= 0 || transform.position.y < -6)
+        if (transform.position.y < -6)
         {
+
+
             Destroy(this.gameObject);
+
+
+        }
+
+
+
+
+
+
+
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "bullet")
+        {
+            crochp--;
+            print("col");
         }
 
     }
+
 
 
 

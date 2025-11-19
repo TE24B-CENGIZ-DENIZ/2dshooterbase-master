@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -3726308792077682756}
   m_Layer: 0
   m_Name: Bolt
-  m_TagString: Untagged
+  m_TagString: bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   boltspeed: 4
+  crocmaxhp: 3
 --- !u!70 &-147746025082102991
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
